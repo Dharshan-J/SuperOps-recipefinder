@@ -32,7 +32,7 @@ const SearchBar = () => {
       q: query,
       app_id: '55860e8a',
       app_key: '2c4615d71298e5457d4ca5d1ca38df8d',
-      field: ['uri', 'label', 'image', 'calories', 'yield', 'source', 'ingredientLines', 'ingredients','id'],
+      field: ['uri', 'label', 'image', 'calories', 'yield', 'source', 'ingredientLines', 'ingredients', 'id'],
       type: 'public'
     };
     try {
@@ -70,7 +70,7 @@ const SearchBar = () => {
         />
         <Button onClick={searchRecipes}>Search</Button>
       </SearchBarContainer>
-      <RecipeList recipes={recipes} loading={loading} style={{flexGrow: '1'}} />
+      <RecipeList recipes={recipes} loading={loading} style={{ flexGrow: '1' }} />
       <Footer></Footer>
     </HomeContainer>
   );
