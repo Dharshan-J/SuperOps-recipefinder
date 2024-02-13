@@ -7,7 +7,7 @@ const ListWrapper = styled.div`
 height: 100%;
 border: 1px solid #E2E8F0;
 margin: 20px;
-overflow: auto; /* Add overflow scrolling */`
+overflow: auto;`
 
 const SpinnerWrapper = styled.div`
 height: 100%;
@@ -18,8 +18,8 @@ justify-content: center`
 const RecipeCardWrapper = styled.div`
 padding:20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Dynamic columns with min width */
-  gap: 20px; /* Adjust the gap between items */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
   
 `;
 
