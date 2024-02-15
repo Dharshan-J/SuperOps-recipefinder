@@ -10,12 +10,20 @@ const HomeContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 10px;   
+
+  }
 `;
 
 const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  @media screen and (max-width: 768px) {
+   flex-direction: column; 
+  }
 `;
 
 const SearchBar = () => {

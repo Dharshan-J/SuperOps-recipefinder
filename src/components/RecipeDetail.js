@@ -5,7 +5,7 @@ import {
   Image, Text, Tag, ListItem, List, ListIcon, Spinner, 
   Stat, StatLabel, StatNumber, Link 
 } from '@chakra-ui/react';
-import { CheckCircleIcon,ExternalLinkIcon } from '@chakra-ui/icons';
+import { CheckCircleIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import styled from 'styled-components';
 import WishlistButton from './WishlistButton';
 
