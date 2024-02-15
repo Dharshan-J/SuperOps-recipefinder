@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import { 
   Image, Text, Tag, ListItem, List, ListIcon, Spinner, 
   Stat, StatLabel, StatNumber, Link 
 } from '@chakra-ui/react';
-import { CheckCircleIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+import { CheckCircleIcon, ExternalLinkIcon,ArrowBackIcon } from '@chakra-ui/icons';
 import styled from 'styled-components';
 import WishlistButton from './WishlistButton';
 
@@ -62,6 +62,7 @@ const RecipeDetail = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [recipeDetail, setRecipeDetail] = useState({});
+  const history = useNavigate();
 
   useEffect(() => {
     const fetchRecipeDetail = async () => {
@@ -96,6 +97,10 @@ const RecipeDetail = () => {
 
   const getCalories = (data) => {
     return `${Math.ceil(data) / 10} kcal`;
+  };
+
+  const goBack = () => {
+    history(-1);
   };
 
   const renderIngredientLines = () => (
@@ -143,8 +148,12 @@ const RecipeDetail = () => {
         <>
           <DetailBanner>
             <RecipeDetails>
+            
               <Image borderRadius='full' boxSize='100px' src={recipeDetail.image} alt={recipeDetail.label} />
-              <div>
+              <div >
+              <Link color="teal.500" onClick={goBack}>
+        <ArrowBackIcon /> Back
+      </Link>
                 <Text fontSize='xs'>{`#${id}`}</Text>
                 <Text fontSize='4xl' as='b'>
                   {recipeDetail.label}

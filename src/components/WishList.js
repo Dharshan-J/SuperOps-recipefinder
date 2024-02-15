@@ -2,6 +2,10 @@ import React from "react";
 import RecipeCard from "./RecipeCard";
 import { useWishlist } from "./WishListContext";
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
+import {  Link 
+} from '@chakra-ui/react';
+import { ArrowBackIcon } from '@chakra-ui/icons';
 
 const RecipeCardWrapper = styled.div`
   display: grid;
@@ -17,9 +21,19 @@ const EmptyWishlistMessage = styled.div`
 
 const WishList = () => {
   const { wishlist } = useWishlist();
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1); 
+  };
 
   return (
+    <>
+    <Link color="teal.500" onClick={goBack} margin="5">
+        <ArrowBackIcon /> Back
+      </Link>
     <RecipeCardWrapper>
+
       {wishlist.length === 0 ? (
         <EmptyWishlistMessage>Your WishList is currently empty.</EmptyWishlistMessage>
       ) : (
@@ -28,6 +42,7 @@ const WishList = () => {
         ))
       )}
     </RecipeCardWrapper>
+    </>
   );
 };
 

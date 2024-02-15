@@ -1,7 +1,8 @@
-import React, {  useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RecipeList from './RecipeList';
 import { Input, Button } from '@chakra-ui/react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HomeContainer = styled.div`
@@ -13,7 +14,6 @@ const HomeContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     padding: 20px 10px;   
-
   }
 `;
 
@@ -22,16 +22,37 @@ const SearchBarContainer = styled.div`
   align-items: center;
   gap: 20px;
   @media screen and (max-width: 768px) {
-   flex-direction: column; 
+    flex-direction: column; 
   }
 `;
 
 const SearchBar = () => {
   const [recipes, setRecipes] = useState([]);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('all');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const searchRecipes = async () => {
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const existingQuery = params.get('q');
+    if (existingQuery) {
+      setQuery(existingQuery);
+      searchRecipes(existingQuery);
+    }
+else {
+      searchRecipes('all');
+    }
+  }, [location]);
+
+  const setSearchQuery = () => {
+    const queryParams = new URLSearchParams();
+    queryParams.set('q', query);
+    navigate({ search: '?' + queryParams.toString() });
+  }
+
+
+  const searchRecipes = async (query) => {
     let params = {
       q: query,
       app_id: '55860e8a',
@@ -59,10 +80,17 @@ const SearchBar = () => {
       console.error('Error fetching recipes:', error);
     }
     setLoading(false);
-  }
+  };
 
   const handleSearch = () => {
-    searchRecipes();
+    setSearchQuery()
+  };
+
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      setSearchQuery()
+    }
   };
 
   return (
@@ -75,6 +103,7 @@ const SearchBar = () => {
           border="1px solid #170426"
           value={query}
           onChange={e => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown} 
         />
         <Button
           onClick={handleSearch}

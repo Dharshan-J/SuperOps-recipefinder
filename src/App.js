@@ -31,9 +31,9 @@ function App() {
             element={<RecipeDetail  />}
           />
           <Route
-          path="/wishlist"
-          element={<WishList />}
-           />
+            path="/wishlist"
+            element={<WishList />}
+          />
 
         </Routes>
         </WishlistProvider>
