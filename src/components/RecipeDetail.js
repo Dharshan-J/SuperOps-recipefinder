@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { 
   Image, Text, Tag, ListItem, List, ListIcon, Spinner, 
-  Stat, StatLabel, StatNumber, Link, ExternalLinkIcon 
+  Stat, StatLabel, StatNumber, Link 
 } from '@chakra-ui/react';
-import { CheckCircleIcon } from '@chakra-ui/icons';
+import { CheckCircleIcon,ExternalLinkIcon } from '@chakra-ui/icons';
 import styled from 'styled-components';
 import WishlistButton from './WishlistButton';
 

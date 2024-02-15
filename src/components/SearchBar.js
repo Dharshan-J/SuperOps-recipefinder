@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import axios from 'axios';
 import RecipeList from './RecipeList';
 import { Input, Button } from '@chakra-ui/react';
@@ -15,18 +15,13 @@ const HomeContainer = styled.div`
 const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
 `;
 
 const SearchBar = () => {
   const [recipes, setRecipes] = useState([]);
-  const [query, setQuery] = useState('salad');
+  const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    searchRecipes();
-  }, []);
 
   const searchRecipes = async () => {
     let params = {
@@ -56,7 +51,7 @@ const SearchBar = () => {
       console.error('Error fetching recipes:', error);
     }
     setLoading(false);
-  };
+  }
 
   const handleSearch = () => {
     searchRecipes();
