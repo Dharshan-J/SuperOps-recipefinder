@@ -36,7 +36,7 @@ const HeaderComponent = () => {
     return (
         <Header>
             <LogoLink href="/">
-                <img src={MyLogo} alt="My PNG" width="100" height="134" />
+                {/* <img src={MyLogo} alt="My PNG" width="100" height="134" /> */}
             </LogoLink>
             <img src={RecipeFinder} alt="My PNG" width="100" height="134" />
             <div>
